@@ -70,7 +70,7 @@
 
 // TLS support, make sure to edit the fingerprint and the broker address if
 // you are not using CloudMQTT
-#define           TLS
+//#define           TLS
 #ifdef TLS
 const char*       broker      = "m21.cloudmqtt.com";
 
@@ -80,13 +80,13 @@ const char*       fingerprint = "A5 02 FF 13 99 9F 8B 39 8E F1 83 4F 11 23 65 0B
 #endif
 
 // PIR motion sensor support, make sure to connect a PIR motion sensor to the GPIO14
-//#define           PIR
+#define           PIR
 #ifdef PIR
 const uint8_t     PIR_SENSOR_PIN = 14;
 #endif
 
 #define           DEBUG                       // enable debugging
-#define           STRUCT_CHAR_ARRAY_SIZE 24   // size of the arrays for MQTT username, password, etc.
+#define           STRUCT_CHAR_ARRAY_SIZE 32   // size of the arrays for MQTT username, password, etc.
 
 // macros for debugging
 #ifdef DEBUG
@@ -453,7 +453,7 @@ void setup() {
   //ArduinoOTA.begin();
 
   ticker.detach();
-
+  relayState = LOW;
   setRelayState();
 }
 
